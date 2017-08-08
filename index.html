@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Impedance Transformation</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Impedance Transformation">
+  <meta name="author" content="Marcel Merchat">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Impedance Transformation</h1>
+    <h2></h2>
+    <p>Marcel Merchat<br/>RF and Microwave Engineer</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });
+</script>
+
+<style> custsty {
+  /*background-image:url(C:/path/mypng.png);*/ 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+.boxText {
+     font-size:0.9em;
+
+}
+    
+table {
+    border-collapse: collapse;
+    width: 980px;
+    height: 400px;
+    /*background-color: #9999FF;*/
+    background-image: none;
+    cell-spacing: 0px;
+    padding-left: 0px;
+    padding-right: 75px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border: 0px solid #BBBBFF;
+}
+
+th {
+    font-color:#FF0000;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #00FFFF;
+    cell-spacing: 0px;
+    border: 0px solid #FFFFFF;
+    margin: 0px;
+    width: 480px;
+    height: 20px;
+}
+
+td {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    cell-spacing: 0px;
+    border: 0px solid #000000;
+    margin: 0px;
+    width: 480px;
+    height: 20px;
+}
+
+body {
+  background-color: #EEEEEE;
+}
+
+slide:not(.segue)  h2{
+ font-family: "Open Sans Condensed";
+ font-weight: 700;
+ color: #449944;
+ /*background-color: #00FFFF; background of S3 */
+}
+
+h3 {
+    font-family: "Open Sans Condensed";
+    font-weight: 90;
+    font-size:32px;
+    LINE-HEIGHT:65px;
+    color: #449944;
+    padding-top: 14px;
+    padding-bottom: 5px;
+
+}
+
+h4 {
+    LINE-HEIGHT:40px;
+    color: #101010;
+    padding-top: 5px;
+}
+
+h5 {
+    LINE-HEIGHT:25px;
+    color: #101010;
+    padding-top: 10px;
+}
+
+.list-line-1 {
+    LINE-HEIGHT:20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    color: #101010;
+}
+
+.list-line-middle {
+    LINE-HEIGHT:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #101010;
+}
+
+.list-line-last {
+    LINE-HEIGHT:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #101010;
+}
+
+.booktitle {
+    LINE-HEIGHT:20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    color: #101010;
+    font-style: italic;
+}
+
+.columntitle {
+    font-size:16px;
+    LINE-HEIGHT:20px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    text-align: center;
+    color: #101010;
+    }
+
+p {
+    padding-left:10px;
+    font-family: arial, verdana, sans-serif;
+    font-size:14px;
+    color: #11FF11;
+}
+
+img {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    /*border: 0px solid #00FFFF;*/
+    margin: auto;
+    /*width: 500px;*/
+}
+
+.img {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border: 0px solid #00FFFF;
+    margin: auto;
+    /*width: 750px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+
+.center {
+    margin: auto;
+
+}
+
+
+caption{
+    padding-bottom: 8px;
+    font-size: 0.5em;
+}
+sub, sup {
+ font-size: 75%;
+ line-height: 0;
+ position: relative;
+ vertical-align: baseline;
+}
+
+.logga img {
+    width: 70%;
+    height: auto;
+}
+
+.title-slide hgroup > h1 {
+  color: #111111;  /* #537E43 #EF5150*/  /*#535E43*/
+}
+
+.title-slide hgroup > h2 {
+  color: #110000 ;  /* #537E43 #EF5150*/  /*#535E43*/
+}
+
+.title-slide hgroup > p {
+  font-family: 'Open Sans','Helvetica', 'Crimson Text', 'Garamond',  'Palatino', sans-serif;
+  text-align: justify;
+  font-size:22px;
+  line-height: 1.5em;
+  padding-left:10px;
+  color: #111111;
+}
+
+.title-slide {
+  background-color: #CBE7B5 /*#CBE7A5; #EDE0CF; ; #CA9F9D*/
+  /* background-image:url(http://goo.gl/EpXln); */
+  
+  /* Reduce Space between Title and Body */
+slides > slide  {
+  margin-top: 15px;
+  background-color: #00FFFF;
+  color: #00FFFF;
+}
+}
+
+</style>
+
+<h2>The Matching Problem</h2>
+
+<p><br><br></p>
+
+<p>The output impedance of a transistor or power amplifier is high compared to a typical antenna. If a 300-\(\Omega\) or less antenna were connected directly to a power amplifier with an output impedance of 10-k\(\Omega\), nearly all of the power would be self-absorbed by the amplifier because the antenna is practically a short circuit in comparison. Instead, we seek to transfer maximum power to the antenna and reduce the internal power dissipation of the amplifier. The solution to this problem is placing an impedance transformer between the two unmatched components.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Impedance Transformer Solutions</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Discrete Components or Transmission Line</h3>
+
+<p>An impedance transformer can be implemented either with discrete components or as a transmission line.  The choice is based on the cost and size of the solution. Low frequency circuits usually use discrete components while the transmission line is more favorable at higher RF and microwave frequencies. In this slideshow, we show how to build a circuit with discrete components and will describe how to accomplish the same thing with transmission lines using the Smith Chart in another slideshow. An impedance transformer with discrete components can be constructed with a desired bandwidth but we are going to describe how to construct the simplest kind where the bandwidth is fixed and cannot be adjusted. We will expand this work later to show the adjustable bandwidth solution.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Reproducible Report</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This slideshow is also an engineering tool that is produced by a computer program. Nothing is performed manually as all calulations are performed in code blocks that are mostly hidden. You can spot visible blocks like these. </p>
+
+<pre><code class="r">pi
+</code></pre>
+
+<pre><code>## [1] 3.141593
+</code></pre>
+
+<p>Sentences like this one are also part of the script but are outside of &quot;code&quot; blocks. After the design calculations are performed, the script in the code blocks changes the component values in the netlist file and a Spice circuit simulation is performed. Finally the plot and other output data files are analyzed by the code and the plots are generated.  </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Discrete Component Implementation</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>An impedance transformer is a tuned circuit that performs its function at the frequency of the RF signal. There are different levels of performance:</h4>
+
+<p><html>
+<head>
+</head>
+<body>
+    <h4 class="list-line-1">(a) No bandwidth control: coil, capacitor, and resistor</h4>
+    <h4 class="list-line-last">(b) Controlled bandwidth of tuned circuit: coil, two capacitors, and resistor</h4></p>
+
+<p></body>
+</html></p>
+
+<h4>We can implement (a) without bandwidth control using a parallel resonance circuit with a series resistor. In order to adjust the bandwidth, we would need to place an additional capacitor across the load.</h4>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h3>Circuit</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><html>
+<head>
+</head>
+<body>
+    <table>
+        <tr><th>RF Small Signal AC Model     </th>  </tr>
+        <tr><td class="center" width="980px"><img class="center" src="circuit1.png"  width="460px" height="308px"/img></td></tr>
+        <tr><td>
+            <br></br>
+            <p>This parallel resonant circuit presents a matching impedance of 4-k\(\Omega\) at 20 MHz to the power amplifier. The 5-\(\Omega\) resistor is transformed to 4-k\(\Omega\) in this manner.</p></td> </tr>
+    </table>
+</body>
+</html></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h3>Simulation Results</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><html>
+<head>
+</head>
+<body>
+    <table>
+        <tr><th>Amplifier Load Impedance (R<sub>t</sub>)</th> </tr>
+        <tr><td width="490px"><img class="center" src="solution1.png" width="460px" height="308px"/img></td> </tr>
+        <tr><td>
+        <br></br>
+        <p>The transformed load impedance R<sub>t</sub> has a peak at 20-MHz where it matches the source resistance of 4-k\(\Omega\). The bandwidth of 707-kHz is the only one possible for this simple circuit. </p></td></tr>
+    </table>
+</body>
+</html></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Relative Bandwidth</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>we will use a concept called Q which represents the relative circuit bandwidth. Let \(f_o\)  be the resonant frequency of the amplifier and let \(f_1\) and \(f_2\) be the upper and lower limits of the tuned bandwidth of the transformer. We set the transmitter frequency to \(fo=20\) MHz and define Q as follows:</p>
+
+<p>\[Q=\frac {f_o}{f_2-f_1}\]
+\[B=\frac {f_o} {Q}\]</p>
+
+<p>Q is a ratio of two frequencies without units. Later we will use the angular frequency \(\omega = 2 \pi f_o\) </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Parallel Resonant Circuit with Series Resistor</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We begin with a formula from page 44 of the textbook we reference at the end of the slideshow. </p>
+
+<p>\[R_t=(1+Q^2) \cdot R_L\]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Design Calulations:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We solve for Q as follows:</p>
+
+<p>\[Q= \sqrt {\frac {R_t}{R_L} - 1}\]</p>
+
+<p>If the power amplifier has an internal output impedance of 4-k\(\Omega\) and a load \(R_L\) of 5-\(\Omega\), the parallel resonant circuit must transform the 5-\(\Omega\) resistance to 4-k\(\Omega\). We will design the matching transformer as follows. We calculate Q = 28.3. </p>
+
+<pre><code class="r">formatC(sqrt(Rt/RL-1), digits = 1, format = &quot;f&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;28.3&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h3>Design Calulations ... continued</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>The bandwidth is already fixed for this design before any component values have been calculated. We calculate the bandwidth as B = 707-kHz using our concept of Q as follows. The extra factor of 1000 converts the result to kHz. Paste is a string operation that displays the result with the kHz units. </p>
+
+<p>\[B= \frac {f_o}{Q}\]</p>
+
+<pre><code class="r">paste(formatC(fo/(Q1*1000), digits = 1, format = &quot;f&quot;), &quot;-kHz&quot;, sep=&quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;707.5-kHz&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h3>Determine Capacitor</h3>
+  </hgroup>
+  <article data-timings="">
+    <h4>We can calculate the capacitor value using the Q value. \(X_C = Q \cdot R_L\).</h4>
+
+<p>\[C = \frac {1}{\omega \cdot X_C}\]</p>
+
+<pre><code class="r">## branch impedance X_c:
+paste(formatC(Q * RL, digits = 1, format = &quot;f&quot;), &quot;-Ohms&quot;, sep=&quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;141.3-Ohms&quot;
+</code></pre>
+
+<pre><code class="r">## branch capacitance C:
+paste(formatC((1/ (w * Xc)) * 10^12, digits = 1, format = &quot;f&quot;), &quot;-pF&quot;, sep=&quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;56.3-pF&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h3>Unadjusted Bandwidth - Determine Inductor</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>\[X_L= (\frac {1}{Q^2} + 1 ) \cdot X_C\]</p>
+
+<p>\[L= \frac {1}{\omega \cdot X_C}\]</p>
+
+<pre><code class="r">## Branch impedance X_c:
+paste(formatC((1/Q^2 + 1) * Xc, digits = 1, format = &quot;f&quot;), &quot;-Ohms&quot;, sep=&quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;141.5-Ohms&quot;
+</code></pre>
+
+<pre><code class="r">## Branch inductance L:
+paste(formatC((XL/w) * 10^6, digits = 3, format = &quot;f&quot;), &quot;-uH&quot;, sep=&quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;1.126-uH&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Design Cycle</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>(1) Calculations</h3>
+
+<h3>(2) Modify Netlist File</h3>
+
+<h5>lines &lt;- readLines(&quot;imp_transfx/rf_impedance_transformer_noBW.net&quot;)</h5>
+
+<h5>lines[2] &lt;- paste(&quot;L_RFC C 0 &quot;,l1,&quot; Ipk=12 Rser=0.0 Cpar=0&quot;,sep=&quot;&quot;)</h5>
+
+<h5>lines[3] &lt;- paste(&quot;C2 c out &quot;,c1, &quot; V=2.5K Irms=0 Rser=0 Lser=0&quot;,sep=&quot;&quot;)</h5>
+
+<h5>writeLines(lines, &quot;imp_transfx/rf_impedance_transformer_noBW.net&quot;,sep=&quot;\n&quot;)</h5>
+
+<h3>(3) Run Spice Simulation with Script Program</h3>
+
+<h5>system2(&quot;cmd&quot;, args = c(&quot;/c&quot;, &quot;xviix64.exe -ascii -b netlist.net&quot;))</h5>
+
+<h3>(4) Analyze Data, Graphs and Report</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The design cycle of calculations, generating the netlist, running the Spice simulator, and analyzing the output data is accomplished by a single computer program. This kind of report is called a &quot;reproducible&quot; as the final report or slideshow is not to be altered. If any changes are required, the computer script is changed.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <article data-timings="">
+    <p><html>
+<head>
+</head>
+<body>
+    <h2> References</h2>
+    <br></br>
+    <h4> This slide show implements the method described in the following book:</h4>
+    <br></br>
+    <h4 class="booktitle">Solid State Radio Engineering</h4>
+    <h4 class="list-line-middle">Herbert L. Krauss, Charles W. Bostian, Frederick H. Raab</h4>
+    <h4 class="list-line-last">John Wiley &amp; Sons Inc.; 1980 </h4></p>
+
+<p></body>
+</html></p>
+
+<p><br></br></p>
+
+<h4>Marcel Merchat</h4>
+
+<h4>August 5, 2017</h4>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Impedance Transformer Solutions'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Reproducible Report'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Discrete Component Implementation'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Circuit'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Simulation Results'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Relative Bandwidth'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Parallel Resonant Circuit with Series Resistor'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Design Calulations:'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Design Calulations ... continued'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Determine Capacitor'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Unadjusted Bandwidth - Determine Inductor'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Design Cycle'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Summary'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
