@@ -1,0 +1,14 @@
+ *  C:/Users/merch/OneDrive/Documents/LTSpice/RF/impedanceTransformer2/imp_transfx/bw_control.asc
+L C 0 2.7782994641562e-06 Ipk=120 Rser=0.0 Cpar=0
+RL out 0 1k
+Vcc N001 0 SINE(0 1 10.7Meg) AC 1 Rser=0.1
+R1 C N001 10k
+C2 out 0 2.51250113678459e-10
+C1 C out 1.16336092126437e-10
+;op
+.ac lin 100 10.1Meg 11.3Meg
+.backanno
+.end
+
+
+

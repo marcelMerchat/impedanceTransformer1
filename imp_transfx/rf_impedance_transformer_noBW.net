@@ -1,0 +1,13 @@
+ * C:/Users/merch/OneDrive/Documents/LTSpice/RF/impedanceTransformers/imp_transfx/RF_impedance_Transformer_NoBW.asc
+L_RFC c 0 1.12891859194138e-06 Ipk=12 Rser=0.0 Cpar=0
+C1 c out 2.25783718388275e-12 V=2.5K Irms=0 Rser=0 Lser=0
+RL out 0 100
+Rt N01 c  5000
+Vcc N01 0 SINE(079.1122.3Meg) AC 1 Rser=0
+;op
+.ac lin 500 79.1Meg 122.3Meg
+.backanno
+.end
+NA
+
+

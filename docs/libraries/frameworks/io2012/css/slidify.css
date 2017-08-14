@@ -51,7 +51,7 @@ article p, article li, article li.build, section p, section li{
 }
 
 slide:not(.segue) h2{
-  font-family: 'Calibri', 'Arial', 'sans-serif';
+  font-family: 'Calibri', Arial, sans-serif;
   font-size: 52px;
   font-style: normal;
   font-weight: bold;
@@ -146,7 +146,7 @@ q.shout:after {
 table caption{
   margin-top: 20pt;
   font-weight: normal;
-  font-family: "Trebuchet MS", "Garuda", "sans-serif";
+  font-family: "Trebuchet MS", Garuda, sans-serif;
 }
 
 table th {
@@ -161,9 +161,9 @@ table {
   border-collapse: collapse;
   font-size: 24px;
   line-height: 32px;
-  font-family: "Trebuchet MS", Garuda, arial, sans-serif;
-  font-weight: normal;
-  /*color: rgb(102, 102, 102);*/
+  font-family: 'Trebuchet MS';
+  font-weight: bolder;
+  color: rgb(102, 102, 102);
 }
 table thead {
   border-top: 1px solid #BFBEAD;
@@ -172,32 +172,17 @@ table thead {
 table th, table td, table caption {
   margin: 0;
   padding: 2pt 6pt;
+  text-align: left;
   vertical-align: top;
 }
 table th {
-  /*background: #CFCEBD;*/
-  background: #DDFFFF;
+  background: #CFCEBD;
   color: #575400;
-  /*text-transform: uppercase;*/
-  text-align: center;
+  text-transform: uppercase;
 }
-
 table td {
-  font-family: "Trebuchet MS", Garuda, arial, sans-serif;
-  font-size: 16px;
-  font-weight: normal;
   border-bottom: 1px solid #CFCEBD;
-  padding-left: 0px;
-  padding-right: 30px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  background-color: #DDFFFF;
-  /*cell-spacing: 0px;*/
-  border: 0px solid #FFFFFF;
-  margin: auto;
 }
-
-
 table tr:nth-child(2n+1) {
 /*  background: #E8F2FF; */
   background: #EFEEDD;
@@ -309,10 +294,7 @@ body {
 
 p {
   text-align: justify;
-  line-height: 1.4em;
-  font-family: "Trebuchet MS", Garuda, arial, sans-serif;
-  font-size: 12px;
-  font-weight: normal;
+  line-height: 1.5em;
 }
 /* Place Video on Top Right */
 /* FIXME: Move CSS to css/popcorn.css */
@@ -351,7 +333,7 @@ slide:not(.segue)  h2{
  color: darkslategray;
 }
 article p {
-  font-family: "Open Sans";
+  font-family: "Open Sans"
 }
 
 code {
@@ -370,15 +352,17 @@ pre code {
 }
 
 .title-slide {
-  background-color: #CBF7C5; /*#CBE7A5; #EDE0CF; ; #CA9F9D*/
+  background-color: #CBE7A5; /* #EDE0CF; ; #CA9F9D*/
   /* background-image:url(http://goo.gl/EpXln); */
 }
 
-.title-slide hgroup > h1 >{
- font-family: 'Oswald', 'Helvetica', sanserif;
+.title-slide hgroup > h1{
+ font-family: 'Oswald', 'Helvetica', sanserif; 
 }
 
-.title-slide hgroup > h1,
+.title-slide hgroup > h1, 
 .title-slide hgroup > h2 {
-  color:  #537E43 ;  /*   #537E43 ; #EF5150*/  /*#535E43*/
+  color: #535E43 ;  /* ; #EF5150*/
 }
+
+
