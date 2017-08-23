@@ -162,7 +162,9 @@ table {
   font-size: 24px;
   line-height: 32px;
   font-family: 'Trebuchet MS';
-  font-weight: bolder;
+  font-family: arial;
+  /*font-weight: bolder;*/
+  padding-top: 20pt;
   color: rgb(102, 102, 102);
 }
 table thead {
@@ -174,14 +176,18 @@ table th, table td, table caption {
   padding: 2pt 6pt;
   text-align: left;
   vertical-align: top;
+  font-family: arial, verdana, sans-serif;
+  font-weight: normal;
 }
 table th {
   background: #CFCEBD;
+  background-color: #CCEEFF;
   color: #575400;
   text-transform: uppercase;
 }
 table td {
-  border-bottom: 1px solid #CFCEBD;
+  border-bottom: 0px solid #CFCEBD;
+  background-color: #CCEEFF;
 }
 table tr:nth-child(2n+1) {
 /*  background: #E8F2FF; */
@@ -294,7 +300,11 @@ body {
 
 p {
   text-align: justify;
-  line-height: 1.5em;
+  line-height: 1.2em;
+  padding-left:10px;
+  font-family: arial, verdana, sans-serif;
+  font-size:14px;
+  color: #11FF11;
 }
 /* Place Video on Top Right */
 /* FIXME: Move CSS to css/popcorn.css */
@@ -357,12 +367,10 @@ pre code {
 }
 
 .title-slide hgroup > h1{
- font-family: 'Oswald', 'Helvetica', sanserif; 
+ font-family: 'Oswald', 'Helvetica', sanserif;
 }
 
-.title-slide hgroup > h1, 
+.title-slide hgroup > h1,
 .title-slide hgroup > h2 {
   color: #535E43 ;  /* ; #EF5150*/
 }
-
-

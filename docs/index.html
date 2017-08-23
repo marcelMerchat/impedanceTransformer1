@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Impedance Transformation</title>
+  <title>Impedance Transformer Design Tool</title>
   <meta charset="utf-8">
-  <meta name="description" content="Impedance Transformation">
+  <meta name="description" content="Impedance Transformer Design Tool">
   <meta name="author" content="Marcel Merchat">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Impedance Transformation</h1>
+    <h1>Impedance Transformer Design Tool</h1>
     <h2></h2>
     <p>Marcel Merchat<br/>RF and Microwave Engineer</p>
   </hgroup>
@@ -101,15 +101,15 @@ td {
     cell-spacing: 0px;
     border: 0px solid #000000;
     margin: auto;
+    font-family: arial, verdana, sans-serif;
+    background-color: #CCEEFF;
     
     /*width: 480px;*/
     height: 20px;
 }
 
 tr {
-    
     margin: auto;
-
 }
 
 body {
@@ -207,6 +207,7 @@ p {
     font-family: arial, verdana, sans-serif;
     font-size:14px;
     color: #11FF11;
+    font-weight: normal;
 }
 
 .tablenote{
@@ -289,7 +290,9 @@ slides > slide  {
 
 <h3>The Matching Problem</h3>
 
-<h4>The output impedance of a transistor or power amplifier is high compared to a typical antenna. If a 300-\(\Omega\) or less antenna were connected directly to a power amplifier with an output impedance of 10-k\(\Omega\), nearly all of the power would be self-absorbed by the amplifier because the antenna is practically a short circuit in comparison. Instead, We seek to transfer maximum power to the antenna and reduce the internal power dissipation of the amplifier. The solution to this problem is placing an impedance transformer between the two unmatched components.</h4>
+<h4>The output impedance of a transistor or power amplifier is high compared to a typical antenna. If a 300-\(\Omega\) or less antenna were connected directly to a power amplifier with an output impedance of 10-k\(\Omega\), nearly all of the power would be self-absorbed by the amplifier because the antenna is practically a short circuit in comparison. Instead, we seek to transfer maximum power to the antenna and reduce the internal power dissipation of the amplifier. The solution to this problem is placing an impedance transformer between the two unmatched components.</h4>
+
+<h4>To generalize the method, the amplifier is a modeled a source with output resistance \(R_t\) and the antenna is modeled as a load resistor \(RL\).</h4>
 
   </article>
   <!-- Presenter Notes -->
@@ -319,7 +322,7 @@ slides > slide  {
 <pre><code>## [1] 3.141593
 </code></pre>
 
-<h4>Sentences like this one are also part of the script but are outside of the &quot;code&quot; blocks. This kind of report is called a &quot;reproducible&quot; as the slideshow is not to be altered. Any changes are made to the script program.</h4>
+<h4>Sentences like this one are also part of the script but are outside of &quot;code&quot; blocks. This kind of report is called a &quot;reproducible&quot; as the slideshow is not to be altered. Any changes are made to the script program.</h4>
 
   </article>
   <!-- Presenter Notes -->
@@ -337,12 +340,12 @@ slides > slide  {
 </head>
 <body>
     <h4 class="list-line-1">(a) No bandwidth control: coil, capacitor, and resistor</h4>
-    <h4 class="list-line-last">(b) controlled bandwidth of tuned circuit: coil, two capacitors, and resistor</h4></p>
+    <h4 class="list-line-last">(b) Controlled bandwidth: coil, two capacitors, and resistor</h4></p>
 
 <p></body>
 </html></p>
 
-<h4>We first implement (a) without bandwidth control using a parallel resonance circuit with a series resistor. Next we adjust the bandwidth by placing an additional capacitor across the load.</h4>
+<h4>We first implement the circuit without bandwidth control using a parallel resonance circuit. Next we adjust the bandwidth by placing an additional capacitor across the load.</h4>
 
   </article>
   <!-- Presenter Notes -->
@@ -350,20 +353,18 @@ slides > slide  {
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>Part B: Transformer with Designed Bandwidth</h2>
+    <h2>Part A: Transformer with Default Bandwidth</h2>
   </hgroup>
   <article data-timings="">
-    <h4>This method provides a designed bandwidth by means of a tapped resonant circuit. We begin with these design parameters.</h4>
+    <h4>This method provides a default bandwidth. We begin with these design parameters.</h4>
 
 <p><br><br></p>
 
-<h4>Tuned Frequency \(f_o\) = 10.7-MHz</h4>
+<h4>Tuned Frequency \(f_o\) = 20-MHz</h4>
 
-<h4>Bandwidth BW = 200-kHz</h4>
+<h4>Source output impedance \(R_t\) = 4-k\(\Omega\)</h4>
 
-<h4>Source output impedance \(R_t\) = 10-k\(\Omega\)</h4>
-
-<h4>Load impedance \(RL\) = 1-\(k\Omega\)</h4>
+<h4>Load impedance \(RL\) = 5-\(\Omega\)</h4>
 
   </article>
   <!-- Presenter Notes -->
@@ -371,7 +372,7 @@ slides > slide  {
 
 <slide class="" id="slide-6" style="background:;">
   <hgroup>
-    <h3>Simple Matching Transformer with Fixed Bandwidth</h3>
+    <h3>Simple Matching Transformer with Default Bandwidth</h3>
   </hgroup>
   <article data-timings="">
     <p><html>
@@ -381,7 +382,7 @@ slides > slide  {
     <table>
         <tr>
             <th>RF Small Signal AC Model     </th>
-            <th>Amplifier Load Impedance (R<sub>t</sub>)</th>
+            <th>Amplifier Load Impedance (RL)</th>
         </tr>
         <tr><td width="490px"><img src="circuit1.png"  width="460px" height="308px"/img></td>
             <td width="490px"><img src="solution1.png" width="460px" height="308px"/img></td> </tr>
@@ -444,7 +445,7 @@ slides > slide  {
 <pre><code class="r">formatC(sqrt(Rt/RL-1), digits = 1, format = &quot;f&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;7.0&quot;
+<pre><code>## [1] &quot;28.3&quot;
 </code></pre>
 
   </article>
@@ -463,7 +464,7 @@ slides > slide  {
 <pre><code class="r">paste(formatC(fo/(Q1*1000), digits = 1, format = &quot;f&quot;), &quot;-kHz&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;14385.7-kHz&quot;
+<pre><code>## [1] &quot;707.5-kHz&quot;
 </code></pre>
 
   </article>
@@ -483,14 +484,14 @@ slides > slide  {
 paste(formatC(Q * RL, digits = 1, format = &quot;f&quot;), &quot;-Ohms&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;700.0-Ohms&quot;
+<pre><code>## [1] &quot;141.3-Ohms&quot;
 </code></pre>
 
 <pre><code class="r">## branch capacitance C:
 paste(formatC((1/ (w * Xc)) * 10^12, digits = 1, format = &quot;f&quot;), &quot;-pF&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;2.3-pF&quot;
+<pre><code>## [1] &quot;56.3-pF&quot;
 </code></pre>
 
   </article>
@@ -510,7 +511,7 @@ paste(formatC((1/ (w * Xc)) * 10^12, digits = 1, format = &quot;f&quot;), &quot;
 paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;-uH&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;1.129-uH&quot;
+<pre><code>## [1] &quot;1.126-uH&quot;
 </code></pre>
 
   </article>
@@ -523,13 +524,13 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
   </hgroup>
   <article data-timings="">
     <pre><code>##  [1] &quot; * C:/Users/merch/OneDrive/Documents/LTSpice/RF/impedanceTransformers/imp_transfx/RF_impedance_Transformer_NoBW.asc&quot;
-##  [2] &quot;L_RFC c 0 1.12891859194138e-06 Ipk=12 Rser=0.0 Cpar=0&quot;                                                              
-##  [3] &quot;C1 c out 2.25783718388275e-12 V=2.5K Irms=0 Rser=0 Lser=0&quot;                                                          
-##  [4] &quot;RL out 0 100&quot;                                                                                                       
-##  [5] &quot;Rt N01 c  5000&quot;                                                                                                     
-##  [6] &quot;Vcc N01 0 SINE(079.1122.3Meg) AC 1 Rser=0&quot;                                                                          
+##  [2] &quot;L_RFC c 0 1.12609942741738e-06 Ipk=12 Rser=0.0 Cpar=0&quot;                                                              
+##  [3] &quot;C1 c out 5.63049713708692e-11 V=2.5K Irms=0 Rser=0 Lser=0&quot;                                                          
+##  [4] &quot;RL out 0 5&quot;                                                                                                         
+##  [5] &quot;Rt N01 c  4000&quot;                                                                                                     
+##  [6] &quot;Vcc N01 0 SINE(018.921.1Meg) AC 1 Rser=0&quot;                                                                           
 ##  [7] &quot;;op&quot;                                                                                                                
-##  [8] &quot;.ac lin 500 79.1Meg 122.3Meg&quot;                                                                                       
+##  [8] &quot;.ac lin 500 18.9Meg 21.1Meg&quot;                                                                                        
 ##  [9] &quot;.backanno&quot;                                                                                                          
 ## [10] &quot;.end&quot;                                                                                                               
 ## [11] &quot;NA&quot;                                                                                                                 
@@ -549,7 +550,7 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <body>
     <table>
         <tr>
-            <th>Impedance Response for simple Circuit with Basic Bandwidth</th>
+            <th>Impedance Response for simple Circuit with Default Bandwidth</th>
         </tr>
         <tr><td class="img"><img class="img" src="no_bw_control.png" width="500px" height="420px"/img></td></tr>
         <tr><td><p class="tablenote">The response of the transformer has a peak at 20-MHz where it matches the source resistance of 4-k\(\Omega\) for the power amplifier. The 707-kHz bandwidth is the only one possible for this simple circuit.</p></td></tr>
@@ -570,9 +571,9 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 
 <p><br><br></p>
 
-<h4>Tuned Frequency \(f_o\) = 10.7-MHz</h4>
+<h4>Tuned Frequency \(f_o\) = 100-MHz</h4>
 
-<h4>Bandwidth BW = 200-kHz</h4>
+<h4>Bandwidth BW = 2-MHz</h4>
 
 <h4>Source output impedance \(R_t\) = 10-k\(\Omega\)</h4>
 
@@ -583,6 +584,26 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 </slide>
 
 <slide class="" id="slide-16" style="background:;">
+  <article data-timings="">
+    <p><html>
+<head>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Small Signal Model for 2-MHz Bandwidth at 100-MHz.</th>
+        </tr>
+        <tr> <td width="800px"><img src="circuit2.png" width="800px" height="400px"/img></td>                 </tr>
+        <tr><td><h5 class="tablenote">Matching transformer</h5></td></tr>
+    </table>
+</body>
+</html></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h4>Step-1: Circuit Q for Bandwidth Control</h4>
   </hgroup>
@@ -592,7 +613,7 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(&quot;Qt =&quot;, formatC(Qt, digits = 1, format = &quot;f&quot;))
 </code></pre>
 
-<pre><code>## [1] &quot;Qt = 50.4&quot;
+<pre><code>## [1] &quot;Qt = 50.0&quot;
 </code></pre>
 
 <h6>The tap section contribution to Q is designated as \(Q_p\) and is calculated as follows:</h6>
@@ -602,14 +623,14 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(&quot;Qp =&quot;, formatC(sqrt((RL/Rt) * (Qt^2 + 1) - 1), digits = 2, format = &quot;f&quot;))
 </code></pre>
 
-<pre><code>## [1] &quot;Qp = 7.05&quot;
+<pre><code>## [1] &quot;Qp = 15.78&quot;
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h4>Step-2: Calculate Capacitance of C2</h4>
   </hgroup>
@@ -619,16 +640,16 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(&quot;C2 = &quot;, formatC((Qp/(w * RL)) * 10^12, digits = 1, format = &quot;f&quot;), &quot;-pF&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;C2 = 111.4-pF&quot;
+<pre><code>## [1] &quot;C2 = 25.1-pF&quot;
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
-    <h4>Step-3: Equivalent Series Components for at Tap Connnection</h4>
+    <h4>Step-3: Equivalent Series Components across Tap Connnection</h4>
   </hgroup>
   <article data-timings="">
     <h4>The parallel tap components C2 and RL are replaced by the series combination of \(C_{se}\) and \(R_{se}\) respectively.</h4>
@@ -638,14 +659,14 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(&quot;Cse = &quot;, formatC((C2 * (1/(Qp^2) + 1)) * 10^12, digits = 1, format = &quot;f&quot;), &quot;-pF&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;Cse = 113.7-pF&quot;
+<pre><code>## [1] &quot;Cse = 25.2-pF&quot;
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h5>Parallel Tap Component:</h5>
   </hgroup>
@@ -655,14 +676,14 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(&quot;Rse = &quot;, formatC(RL/((Qp^2) + 1), digits = 1, format = &quot;f&quot;), &quot;-Ohms&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;Rse = 2.0-Ohms&quot;
+<pre><code>## [1] &quot;Rse = 4.0-Ohms&quot;
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h5>Branch Impedance \(X_C\):</h5>
   </hgroup>
@@ -672,20 +693,20 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(&quot;XC = &quot;, formatC(XC, digits = 1, format = &quot;f&quot;), &quot;-Ohms&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;XC = 99.3-Ohms&quot;
+<pre><code>## [1] &quot;XC = 199.9-Ohms&quot;
 </code></pre>
 
 <pre><code class="r">paste(&quot;C = &quot;, formatC((1/(w*XC)) * 10^12, digits = 1, format = &quot;f&quot;), &quot;-pF&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;C = 15.9-pF&quot;
+<pre><code>## [1] &quot;C = 8.0-pF&quot;
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h5>Circuit Component C1:</h5>
   </hgroup>
@@ -695,14 +716,14 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(&quot;C1 = &quot;, formatC((-Cse * C / (C - Cse)) * 10^12, digits = 1, format = &quot;f&quot;), &quot;-pF&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;C1 = 18.5-pF&quot;
+<pre><code>## [1] &quot;C1 = 11.6-pF&quot;
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h3>Determine Inductor</h3>
   </hgroup>
@@ -714,30 +735,10 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <pre><code class="r">paste(formatC(L * 10^6, digits = 2, format = &quot;f&quot;), &quot;-uH&quot;, sep=&quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;0.16-uH&quot;
+<pre><code>## [1] &quot;0.32-uH&quot;
 </code></pre>
 
 <h6>The quadratic equation has a second solution for L. We choose the higher value.</h6>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-23" style="background:;">
-  <article data-timings="">
-    <p><html>
-<head>
-</head>
-<body>
-    <table>
-        <tr>
-            <th>RF Small Signal AC Model</th>
-        </tr>
-        <tr> <td width="800px"><img src="circuit2.png" width="800px" height="500px"/img></td>                 </tr>
-        <tr><td><h5 class="tablenote">Circuit with matching transformer for controlled bandwidth of 200-kHz at 10.7-Mhz.</h5></td></tr>
-    </table>
-</body>
-</html></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -749,14 +750,14 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
   </hgroup>
   <article data-timings="">
     <pre><code>##  [1] &quot; *  C:/Users/merch/OneDrive/Documents/LTSpice/RF/impedanceTransformers/imp_transfx/bw_control.asc&quot;
-##  [2] &quot;L C 0 1.56826157181857e-07 Ipk=120 Rser=0.0 Cpar=0&quot;                                               
-##  [3] &quot;Vcc N01 0 SINE(0 79.1122.3Meg) AC 1 Rser=0&quot;                                                       
-##  [4] &quot;Rt N01 C  5000&quot;                                                                                   
-##  [5] &quot;C1 C out 1.85147212333979e-11&quot;                                                                    
-##  [6] &quot;RL out 0 100&quot;                                                                                     
-##  [7] &quot;C2 out 0 1.11446624977022e-10&quot;                                                                    
+##  [2] &quot;L C 0 3.18055289143294e-07 Ipk=120 Rser=0.0 Cpar=0&quot;                                               
+##  [3] &quot;Vcc N01 0 SINE(0 97103Meg) AC 1 Rser=0&quot;                                                           
+##  [4] &quot;Rt N01 C  10000&quot;                                                                                  
+##  [5] &quot;C1 C out 1.163297116301e-11&quot;                                                                      
+##  [6] &quot;RL out 0 1000&quot;                                                                                    
+##  [7] &quot;C2 out 0 2.51192689211422e-11&quot;                                                                    
 ##  [8] &quot;;op&quot;                                                                                              
-##  [9] &quot;.ac lin 500 79.1Meg 122.3Meg&quot;                                                                     
+##  [9] &quot;.ac lin 500 97Meg 103Meg&quot;                                                                         
 ## [10] &quot;.backanno&quot;                                                                                        
 ## [11] &quot;.end&quot;                                                                                             
 ## [12] &quot;&quot;                                                                                                 
@@ -777,10 +778,10 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 <body>
     <table>
         <tr>
-            <th>Impedance Response for Fixed Bandwidth Circuit</th>
+            <th>Impedance Response for 2-MHz Bandwidth Circuit</th>
         </tr>
         <tr><td class="img" width="600px"><img class="img" src="bw_control.png" width="600px" height="475px"/img></td></tr>
-        <tr><td><h5 class="tablenote">The response of the transformer has a peak at 10.7-MHz where it matches the source resistance of 10-k\(\Omega\) for the power amplifier. The design parameters were adjusted for a bandwidth of 200-kHz.</h5></td></tr>
+        <tr><td><h5 class="tablenote">The response of the transformer has a peak at 100-MHz where it matches the source resistance of 10-k\(\Omega\) for the power amplifier.</h5></td></tr>
     </table>
 </body>
 </html></p>
@@ -810,7 +811,7 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
 
 <h4>Marcel Merchat</h4>
 
-<h4>August 5, 2017</h4>
+<h4>August 22, 2017</h4>
 
   </article>
   <!-- Presenter Notes -->
@@ -846,13 +847,13 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Part B: Transformer with Designed Bandwidth'>
+        data-slide=5 title='Part A: Transformer with Default Bandwidth'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Simple Matching Transformer with Fixed Bandwidth'>
+        data-slide=6 title='Simple Matching Transformer with Default Bandwidth'>
          6
       </a>
     </li>
@@ -912,49 +913,49 @@ paste(formatC(( Rt/(Q * w)) * 10^6 , digits = 3, format = &quot;f&quot;), &quot;
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Step-1: Circuit Q for Bandwidth Control'>
+        data-slide=16 title='NA'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Step-2: Calculate Capacitance of C2'>
+        data-slide=17 title='Step-1: Circuit Q for Bandwidth Control'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Step-3: Equivalent Series Components for at Tap Connnection'>
+        data-slide=18 title='Step-2: Calculate Capacitance of C2'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Parallel Tap Component:'>
+        data-slide=19 title='Step-3: Equivalent Series Components across Tap Connnection'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Branch Impedance \(X_C\):'>
+        data-slide=20 title='Parallel Tap Component:'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Circuit Component C1:'>
+        data-slide=21 title='Branch Impedance \(X_C\):'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Determine Inductor'>
+        data-slide=22 title='Circuit Component C1:'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='NA'>
+        data-slide=23 title='Determine Inductor'>
          23
       </a>
     </li>
